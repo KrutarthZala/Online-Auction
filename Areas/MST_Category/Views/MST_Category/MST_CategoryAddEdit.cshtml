@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "MST_CategoryAddEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model OnlineAuction.Areas.MST_Category.Models.MST_CategoryModel
+
+<div class="card col-12">
+    <div class="card-body">
+        <h5 class="card-title">Category Add/Edit</h5>
+        <h2>@TempData["CategoryInsertMsg"]</h2>
+        <!-- Horizontal Form -->
+        <form method="post" asp-area="MST_Category" asp-controller="MST_Category" asp-action="Save" enctype="multipart/form-data">
+            @Html.HiddenFor(x => x.CategoryID)
+            @Html.HiddenFor(x => x.CategoryImage)
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputCategory" class="col-sm-5 col-form-label">Category Name</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="inputCategory" asp-for="CategoryName">
+                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputImage" class="col-sm-5 col-form-label">Category Image</label>
+                    <div class="col-sm-7">
+                        <input type="file" class="form-control" id="inputImage" asp-for="File">
+                        <span asp-validation-for="CategoryImage" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputDetails" class="col-sm-5 col-form-label">Category Details</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="inputDetails" asp-for="CategoryDetails">
+                        <span asp-validation-for="CategoryDetails" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a type="reset" class="btn btn-danger" asp-controller="MST_Category" asp-action="Cancel">Cancel</a>
+            </div>
+        </form><!-- End Horizontal Form -->
+
+    </div>
+</div>
+

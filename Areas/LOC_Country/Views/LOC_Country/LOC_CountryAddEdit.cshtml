@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "LOC_CountryAddEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model OnlineAuction.Areas.LOC_Country.Models.LOC_CountryModel
+
+<div class="card col-8">
+    <div class="card-body">
+        <h5 class="card-title">Country Add/Edit</h5>
+        <h2>@TempData["CountryInsertMsg"]</h2>
+        <!-- Horizontal Form -->
+        <form method="post" asp-area="LOC_Country" asp-controller="LOC_Country" asp-action="Save">
+            @Html.HiddenFor(x => x.CountryID)
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputCountry" class="col-sm-5 col-form-label">Country Name</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="inputCountry" asp-for="CountryName">
+                        <span asp-validation-for="CountryName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputCode" class="col-sm-5 col-form-label">Country Code</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="inputCode" asp-for="CountryCode">
+                        <span asp-validation-for="CountryCode" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a type="reset" class="btn btn-danger" asp-controller="LOC_Country" asp-action="Cancel">Cancel</a>
+            </div>
+        </form><!-- End Horizontal Form -->
+
+    </div>
+</div>

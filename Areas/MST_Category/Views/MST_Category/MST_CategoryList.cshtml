@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "MST_CategoryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Data
+@model DataTable;
+
+<div class="pagetitle float-start">
+    <h1>Category List</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item">Category</li>
+            <li class="breadcrumb-item active">List</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<a asp-area="MST_Category" asp-controller="MST_Category" asp-action="Add" type="button" class="btn btn-outline-success float-end">+ Add Category</a>
+
+<section class="section" style="clear:both;">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Category Name</th>
+                                <th scope="col">Category Image</th>
+                                <th scope="col">Category Details</th>
+                                <th scope="col">Creation Date</th>
+                                <th scope="col">Modification Date</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow dr in Model.Rows)
+                            {
+                                <tr>
+                                    <td>@dr["CategoryName"]</td>
+                                    <td><img src='@dr["CategoryImage"]' style="width:100px; height: 100px;" class="img img-responsive" /></td>
+                                    <td>@dr["CategoryDetails"]</td>
+                                    <td>@Convert.ToDateTime(dr["CreationDate"]).ToString()</td>
+                                    <td>@Convert.ToDateTime(dr["ModificationDate"]).ToString()</td>
+                                    <td>
+                                        <form method="post" asp-area="MST_Category" asp-controller="MST_Category" asp-action="Add">
+                                            <input type="hidden" name="CategoryID" value="@Convert.ToInt32(dr["CategoryID"].ToString())">
+                                            <button type="submit" class="btn btn-primary"><i class="ri-pencil-line"></i></button>
+                                        </form>
+                                        <form method="post" asp-area="MST_Category" asp-controller="MST_Category" asp-action="Delete">
+                                            <input type="hidden" name="CategoryID" value="@Convert.ToInt32(dr["CategoryID"].ToString())">
+                                            <button type="submit" class="btn btn-danger" onclick="return categoryDelete()"><i class="ri-delete-bin-line"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                            
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts
+    {
+    <script>
+
+        function categoryDelete() {
+            if (confirm("Are you sure you want to delete this category ?")) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+}
+

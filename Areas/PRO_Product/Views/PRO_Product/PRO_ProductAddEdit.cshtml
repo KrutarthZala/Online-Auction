@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewData["Title"] = "PRO_ProductAddEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model OnlineAuction.Areas.PRO_Product.Models.PRO_ProductModel;
+
+<div class="card col-12">
+    <div class="card-body">
+        <h5 class="card-title">Category Add/Edit</h5>
+        <h2>@TempData["ProductInsertMsg"]</h2>
+        <!-- Horizontal Form -->
+        <form method="post" asp-area="PRO_Product" asp-controller="PRO_Product" asp-action="Save" enctype="multipart/form-data">
+            @Html.HiddenFor(x => x.ProductID)
+            @Html.HiddenFor(x => x.ProductImage)
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputCategory" class="col-sm-5 col-form-label">Product Name</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="inputCategory" asp-for="ProductName">
+                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputImage" class="col-sm-5 col-form-label">Product Image</label>
+                    <div class="col-sm-7">
+                        <input type="file" class="form-control" id="inputImage" asp-for="File">
+                        <span asp-validation-for="ProductImage" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputDetails" class="col-sm-5 col-form-label">Product Details</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="inputDetails" asp-for="ProductDetails">
+                        <span asp-validation-for="ProductDetails" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputDetails" class="col-sm-5 col-form-label">Select Category</label>
+                    <div class="col-sm-7">
+                        <select class ="form-control" asp-for="CategoryID" asp-items="@(new SelectList(ViewBag.CategoryList,"CategoryID","CategoryName"))">
+                            <option value="">Select Category</option>
+                        </select>
+                        <span asp-validation-for="CategoryID" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputDetails" class="col-sm-5 col-form-label">Product Price</label>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control" id="inputDetails" asp-for="ProductPrice">
+                        <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-center">
+                <div class="row mb-3">
+                    <label for="inputDetails" class="col-sm-5 col-form-label">Product Status</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="inputDetails" asp-for="ProductStatus">
+                        <span asp-validation-for="ProductStatus" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a type="reset" class="btn btn-danger" asp-controller="PRO_Product" asp-action="Cancel">Cancel</a>
+            </div>
+        </form><!-- End Horizontal Form -->
+
+    </div>
+</div>
+
