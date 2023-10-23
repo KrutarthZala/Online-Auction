@@ -74,7 +74,7 @@ namespace OnlineAuction.Areas.PRO_Product.Controllers
                 vlist.CategoryID = Convert.ToInt32(dr["CategoryID"]);
                 vlist.CategoryName = dr["CategoryName"].ToString();
                 list.Add(vlist);
-            }
+            }   
             ViewBag.CategoryList = list;
             #endregion
 
@@ -135,21 +135,21 @@ namespace OnlineAuction.Areas.PRO_Product.Controllers
             if (modelPRO_Product.ProductID == null)
             {
 
-                DataTable dt = dalProduct.dbo_PR_PRO_Product_Insert(modelPRO_Product.ProductName, modelPRO_Product.ProductImage, modelPRO_Product.ProductDetails, modelPRO_Product.ProductPrice,modelPRO_Product.ProductStatus,modelPRO_Product.ProductID);
+                DataTable dt = dalProduct.dbo_PR_PRO_Product_Insert(modelPRO_Product.ProductName, modelPRO_Product.ProductImage, modelPRO_Product.ProductDetails, modelPRO_Product.ProductPrice,modelPRO_Product.ProductStatus,modelPRO_Product.CategoryID);
 
                 TempData["ProductInsertMsg"] = "Product Inserted Succesfully";
             }
             else
             {
 
-                DataTable dt = dalProduct.dbo_PR_PRO_Product_UpdateByPK(modelPRO_Product.ProductID, modelPRO_Product.ProductName, modelPRO_Product.ProductImage, modelPRO_Product.ProductDetails, modelPRO_Product.ProductPrice, modelPRO_Product.ProductStatus, modelPRO_Product.ProductID);
+                DataTable dt = dalProduct.dbo_PR_PRO_Product_UpdateByPK(modelPRO_Product.ProductID, modelPRO_Product.ProductName, modelPRO_Product.ProductImage, modelPRO_Product.ProductDetails, modelPRO_Product.ProductPrice, modelPRO_Product.ProductStatus, modelPRO_Product.CategoryID);
 
                 TempData["ProductInsertMsg"] = "Product Updated Succesfully";
 
                 return View("PRO_ProductAddEdit");
             }
 
-            return View("PRO_ProductAddEdit");
+            return View("PRO_ProductList");
 
         }
 

@@ -14,9 +14,9 @@
 
         public decimal? ProductPrice { get; set; }
 
-        public string? ProductStatus { get; set; }   
+        public string ProductStatus { get; set; }   
 
-        public int? CategoryID { get; set; }
+        public int CategoryID { get; set; }
 
         public DateTime? CreationDate { get; set; }
 

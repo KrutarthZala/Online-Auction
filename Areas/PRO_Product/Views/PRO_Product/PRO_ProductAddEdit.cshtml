@@ -8,12 +8,13 @@
 
 <div class="card col-12">
     <div class="card-body">
-        <h5 class="card-title">Category Add/Edit</h5>
+        <h5 class="card-title">Product Add/Edit</h5>
         <h2>@TempData["ProductInsertMsg"]</h2>
         <!-- Horizontal Form -->
         <form method="post" asp-area="PRO_Product" asp-controller="PRO_Product" asp-action="Save" enctype="multipart/form-data">
             @Html.HiddenFor(x => x.ProductID)
             @Html.HiddenFor(x => x.ProductImage)
+            @* @Html.HiddenFor(x => x.CategoryID) *@
             <div class="d-flex justify-content-center">
                 <div class="row mb-3">
                     <label for="inputCategory" class="col-sm-5 col-form-label">Product Name</label>
@@ -46,11 +47,19 @@
             
             <div class="d-flex justify-content-center">
                 <div class="row mb-3">
-                    <label for="inputDetails" class="col-sm-5 col-form-label">Select Category</label>
+                    <label for="ProductID" class="col-sm-5 col-form-label">Select Category</label>
                     <div class="col-sm-7">
                         <select class ="form-control" asp-for="CategoryID" asp-items="@(new SelectList(ViewBag.CategoryList,"CategoryID","CategoryName"))">
                             <option value="">Select Category</option>
                         </select>
+                        @* <select class="form-control filter mr-sm-2 form-select" id="ProductID" name="CategoryID">
+                            <option value="">--Select Category--</option>
+
+                            @foreach (var item in ViewBag.CategoryList)
+                            {
+                                <option value="@item.CategoryID">@item.CategoryName</option>
+                            }
+                        </select> *@
                         <span asp-validation-for="CategoryID" class="text-danger"></span>
                     </div>
                 </div>

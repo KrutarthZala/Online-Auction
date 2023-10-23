@@ -96,6 +96,7 @@ namespace OnlineAuction.DAL
                 sqlDB.AddInParameter(dbCMD, "ProductPrice", SqlDbType.Decimal, ProductPrice);
                 sqlDB.AddInParameter(dbCMD, "ProductStatus", SqlDbType.NVarChar, ProductStatus);
                 sqlDB.AddInParameter(dbCMD, "CategoryID", SqlDbType.Int, CategoryID);
+                sqlDB.AddInParameter(dbCMD, "UserID", SqlDbType.Int, CV.UserID());
                 sqlDB.AddInParameter(dbCMD, "CreationDate", SqlDbType.DateTime, DBNull.Value);
                 sqlDB.AddInParameter(dbCMD, "ModificationDate", SqlDbType.DateTime, DBNull.Value);
 
@@ -119,7 +120,7 @@ namespace OnlineAuction.DAL
 
         #region dbo.PR_PRO_Product_UpdateByPK
 
-        public DataTable dbo_PR_PRO_Product_UpdateByPK(int? ProductID,string ProductName, string ProductImage, string ProductDetails, decimal? ProductPrice, string ProductStatus, int? CategoryID)
+        public DataTable dbo_PR_PRO_Product_UpdateByPK(int? ProductID,string ProductName, string ProductImage, string ProductDetails, decimal? ProductPrice, string ProductStatus, int CategoryID)
         {
             try
             {

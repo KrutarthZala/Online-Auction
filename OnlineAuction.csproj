@@ -10,15 +10,19 @@
     <Compile Remove="Areas\SEC_User\Controllers\Data\**" />
     <Compile Remove="Areas\SEC_User\Views\SEC_User\**" />
     <Compile Remove="Views\SEC_User\**" />
+    <Compile Remove="wwwroot\UploadProduct\**" />
     <Content Remove="Areas\SEC_User\Controllers\Data\**" />
     <Content Remove="Areas\SEC_User\Views\SEC_User\**" />
     <Content Remove="Views\SEC_User\**" />
+    <Content Remove="wwwroot\UploadProduct\**" />
     <EmbeddedResource Remove="Areas\SEC_User\Controllers\Data\**" />
     <EmbeddedResource Remove="Areas\SEC_User\Views\SEC_User\**" />
     <EmbeddedResource Remove="Views\SEC_User\**" />
+    <EmbeddedResource Remove="wwwroot\UploadProduct\**" />
     <None Remove="Areas\SEC_User\Controllers\Data\**" />
     <None Remove="Areas\SEC_User\Views\SEC_User\**" />
     <None Remove="Views\SEC_User\**" />
+    <None Remove="wwwroot\UploadProduct\**" />
   </ItemGroup>
 
   <ItemGroup>
